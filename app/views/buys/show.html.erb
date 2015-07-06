@@ -1,0 +1,54 @@
+<% content_for :functional_nav do%>
+<li><%= link_to 'Add', new_buy_path %></li>
+<li><%= link_to 'Edit', edit_buy_path(@buy) %></li>
+<li><%= link_to 'Back', buys_path %></li>
+<li><%= link_to 'Destroy', @buy, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+
+<% end %>
+<%= currently_at 'Buys'%>
+
+<p>
+  <b>Stock:</b>
+  <%= @buy.stock.name %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @buy.date %>
+</p>
+
+<p>
+  <b>Qty:</b>
+  <%= number_with_delimiter(@buy.qty) %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= number_to_currency(@buy.price) %>
+</p>
+
+<p>
+  <b>Fee:</b>
+  <%= number_to_currency(@buy.fee) %>
+</p>
+
+<p>
+  <b>VAT:</b>
+  <%= @buy.vat %>
+</p>
+<p>
+  <b>Net:</b>
+  <%= number_to_currency(@buy.net) %>
+</p>
+<p>
+  <b>Status:</b>
+  <%= @buy.status %>
+</p>
+<p>
+  <b>Kind:</b>
+  <%= @buy.kind %>
+</p>
+<p>
+   <%= image_tag @buy.chart_url.to_s %>
+</p>
+

@@ -1,0 +1,28 @@
+<% content_for :functional_nav do%>
+<li><%= link_to 'Add', new_stock_path %></li>
+<% end %>
+<%= currently_at 'Stocks'%>
+
+<h1>Listing stocks</h1>
+
+<table id="stocks" class="display">
+<thead>	
+  <tr>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Website</th>
+  </tr>
+</thead>
+<tbody>
+<% @stocks.each do |stock| %>
+  <tr>
+    <td><%= link_to(stock.name, stock) %></td>
+    <td><%= stock.category.name %></td>
+    <td><%= link_to(stock.website, "http://"+stock.website, :target => "_new") %></td>
+
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+

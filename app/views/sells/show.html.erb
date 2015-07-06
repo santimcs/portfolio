@@ -1,0 +1,32 @@
+<% content_for :functional_nav do%>
+<li><%= link_to 'Add', new_sell_path %></li>
+<li><%= link_to 'Edit', edit_sell_path(@sell) %></li>
+<li><%= link_to 'Back', sells_path %></li>
+<li><%= link_to 'Destroy', @sell, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+
+<% end %>
+<%= currently_at 'Sells'%>
+
+<% diff = @sell.price - @sell.buy.price %>
+
+			<div class = "results-table">
+				<div class="wrapper">
+					
+						<div class="column">	
+<table class="table">
+	<thead>
+	<tr><th><%= @sell.buy.stock.name %></th><th>Date</th><th>Price</th><th>Net</th><th>Percent</th></tr>	
+	</thead>
+	<tr><td>Sell</td><td><%= @sell.date %></td><td><%= number_to_currency(@sell.price) %></td><td><%= number_to_currency(@sell.net) %></td><td><%= number_to_percentage(@sell.percent, precision: 2) %></td></tr>	
+	<tr><td>Buy</td><td><%= @sell.buy.date %></td><td><%= number_to_currency(@sell.buy.price) %></td><td><%= number_to_currency(@sell.buy.net) %></td><td><%= number_to_percentage(@sell.yearly, precision: 2) %></td></tr>	
+	<tr><td>Qty</td><td><%= number_with_delimiter(@sell.buy.qty) %></td><td><%= number_to_currency(diff) %></td><td><%= number_to_currency(@sell.profit) %></td><td>  <%= @sell.days.to_s + ' days' %></td></tr>	
+</table>
+</div>	
+</div>	
+</div>
+
+
+<p>
+   <%= image_tag @sell.chart_url.to_s %>
+</p>
+

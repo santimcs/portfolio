@@ -1,0 +1,71 @@
+.results-table {
+	background-color: #445da0;
+	background-image: -ms-linear-gradient(top, #0399cc 0%, #445da0 100%);
+	/* IE10 Consumer Preview */
+	background-image: -moz-linear-gradient(top, #0399cc 0%, #445da0 100%);
+	/* Opera */
+	background-image: -o-linear-gradient(top, #0399cc 0%, #445da0 100%);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #0399cc), color-stop(1, #445da0));
+	/* Webkit (Safari/Chrome 10) */
+	background-image: -webkit-linear-gradient(top, #0399cc 0%, #445da0 100%);
+	/* Webkit (Chrome 11+) */
+	background-image: linear-gradient(to bottom, #0399cc 0%, #445da0 100%);
+	/* W3C Markup, IE10 Release Preview */
+	width: 100%; 
+	}
+.results-table .wrapper {
+  /*  background: url(background-pattern-table.jpg) no-repeat center top; */
+	}
+
+.results-table .column table {
+      font-size: 12px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      overflow: hidden;
+      width: 80%; }
+
+.results-table .column table thead{
+    color: #484848;
+ }
+
+.results-table .column td {
+    padding: 12px 15px 10px 15px; }
+.results-table .column tr:nth-child(odd) {
+    background: #c0e8ff; }
+.results-table .column tr:nth-child(even) {
+    background: #EEF9FF; }
+		
+.results-table .flag {
+    background: url(../images/sprite-flags.png) no-repeat;
+    display: inline-block;
+    height: 15px;
+    margin-right: 5px;
+    width: 23px;
+    vertical-align: middle; }
+	
+.results-table .flag.cam {
+      background-position: 0 0; }
+.results-table .flag.lao {
+      background-position: 0 -15px; }
+.results-table .flag.mas {
+      background-position: 0 -30px; }
+.results-table .flag.mya {
+      background-position: 0 -45px; }
+.results-table .flag.sin {
+      background-position: 0 -60px; }
+.results-table .flag.tha {
+      background-position: 0 -75px; }
+.results-table .flag.vie {
+      background-position: 0 -90px; }
+.results-table .flag.bru {
+      background-position: 0 -105px; }
+.results-table .flag.ina {
+      background-position: 0 -120px; }
+.results-table .flag.phi {
+      background-position: 0 -135px; }
+.results-table .flag.tls {
+      background-position: 0 -150px; }
+.results-table .flag.def {
+      background: transparent; }		
+	  
+	  

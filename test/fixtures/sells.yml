@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  buy_id: 1
+  date: 2015-01-10
+  price: 9.99
+
+two:
+  buy_id: 1
+  date: 2015-01-10
+  price: 9.99

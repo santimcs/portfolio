@@ -1,0 +1,25 @@
+
+<% content_for :functional_nav do%>
+<li><%= link_to 'Add', new_stock_path %></li>
+<li><%= link_to 'Edit', edit_stock_path(@stock) %></li>
+<li><%= link_to 'Back', stocks_path %></li>
+<% end %>
+<%= currently_at 'Stocks'%>
+
+<p>
+  <b>Name:</b>
+  <%= @stock.name %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @stock.category.name %>
+</p>
+
+<p>
+  <b>Website:</b>
+  <%= @stock.website %>
+</p>
+
+
+

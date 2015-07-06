@@ -1,0 +1,21 @@
+<% content_for :functional_nav do%>
+<li><%= link_to 'Add', new_category_path %></li>
+<li><%= link_to 'Edit', edit_category_path(@category) %></li>
+<li><%= link_to 'Back', categories_path %></li>
+<% end %>
+<%= currently_at 'Categories'%>
+
+
+<p>
+  <b>Name:</b>
+  <%= @category.name %>
+</p>
+
+<p>
+  <b>Sequence:</b>
+  <%= @category.sequence %>
+</p>
+
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>

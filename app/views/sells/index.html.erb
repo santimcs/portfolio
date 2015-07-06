@@ -1,0 +1,55 @@
+<% content_for :functional_nav do%>
+<li><%= link_to 'Add', new_sell_path %></li>
+<% end %>
+<%= currently_at 'Sells'%>
+
+<h1>Listing sells</h1>
+
+<table id="sells" class="display">
+<thead>	
+  <tr>
+    <th>Seq</th>  	
+    <th>Name</th>
+    <th>Sell Date</th>
+    <th>Buy Date</th>   
+    <th>Days</th>     
+    <th>Month</th>    
+    <th>Qty</th>    
+    <th>Sell</th>
+     <th>Buy</th>   
+    <th>Sell Amt</th> 
+    <th>Buy Amt</th>        
+    <th>Profit</th>
+    <th>Percent</th>
+    <th>Yearly</th>    
+    <th>Website</th>
+    <th>Kind</th>        
+  </tr>
+</thead>
+<tbody>
+<% @sells.each do |sell| %>
+  <tr>
+    <td><%= sell.sequence %></td>  	
+    <td><%= link_to(sell.buy.stock.name, sell) %></td>
+    <td><%= sell.date %></td>
+    <td><%= sell.buy.date %></td>    
+    <td><%= sell.days %></td>    
+    <td><%= sell.date.strftime("%B") %></td>    
+    <td><%= number_with_delimiter(sell.buy.qty) %></td>
+    <td><%= number_to_currency(sell.price) %></td>   
+     <td><%= number_to_currency(sell.buy.price) %></td>       
+    <td><%= number_to_currency(sell.net) %></td>    
+    <td><%= number_to_currency(sell.buy.net) %></td>    
+    <td><%= number_to_currency(sell.profit) %></td>    
+    <td><%= number_to_percentage(sell.percent, precision: 2) %></td>
+    <td><%= number_to_percentage(sell.yearly, precision: 2) %></td>    
+    <td><%= link_to(sell.buy.stock.website, "http://"+sell.buy.stock.website, :target => "_new") %></td>    
+    <td><%= sell.buy.kind %></td> 
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Sell', new_sell_path %>
