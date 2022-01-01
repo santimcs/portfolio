@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  short_sell: 
+  date: 2016-03-07
+  price: 9.99
+  fee: 9.99
+  vat: 9.99
+  net: 9.99
+  days: 1
+  profit: 9.99
+  percent: 9.99
+  yearly: 9.99
+  sequence: 1
+  chart: MyString
+
+two:
+  short_sell: 
+  date: 2016-03-07
+  price: 9.99
+  fee: 9.99
+  vat: 9.99
+  net: 9.99
+  days: 1
+  profit: 9.99
+  percent: 9.99
+  yearly: 9.99
+  sequence: 1
+  chart: MyString

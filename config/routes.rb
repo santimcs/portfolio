@@ -1,15 +1,18 @@
 Portfolio::Application.routes.draw do
-  resources :sells
 
+  resources :dividends
+
+  resources :cover_buys
+
+  resources :short_sells
+
+  resources :sells
 
   resources :buys
 
-
   resources :stocks
 
-
   resources :categories
-
 
   get "pages/home"
 	root :to => 'pages#home'

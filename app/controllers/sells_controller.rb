@@ -1,47 +1,30 @@
 class SellsController < ApplicationController
+  before_action :set_sell, only: [:show, :edit, :update, :destroy]
+
   # GET /sells
   # GET /sells.json
   def index
     @sells = Sell.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @sells }
-    end
   end
 
   # GET /sells/1
   # GET /sells/1.json
   def show
-    @sell = Sell.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @sell }
-    end
   end
 
   # GET /sells/new
-  # GET /sells/new.json
   def new
     @sell = Sell.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @sell }
-    end
   end
 
   # GET /sells/1/edit
   def edit
-    @sell = Sell.find(params[:id])
   end
 
   # POST /sells
   # POST /sells.json
   def create
-    @sell = Sell.new(params[:sell])
-
+    @sell = Sell.new(sell_params)
     respond_to do |format|
       if @sell.save
         format.html { redirect_to @sell, notice: 'Sell was successfully created.' }
@@ -56,10 +39,8 @@ class SellsController < ApplicationController
   # PUT /sells/1
   # PUT /sells/1.json
   def update
-    @sell = Sell.find(params[:id])
-
     respond_to do |format|
-      if @sell.update_attributes(params[:sell])
+      if @sell.update(sell_params)
         format.html { redirect_to @sell, notice: 'Sell was successfully updated.' }
         format.json { head :no_content }
       else
@@ -72,12 +53,21 @@ class SellsController < ApplicationController
   # DELETE /sells/1
   # DELETE /sells/1.json
   def destroy
-    @sell = Sell.find(params[:id])
     @sell.destroy
-
     respond_to do |format|
       format.html { redirect_to sells_url }
       format.json { head :no_content }
     end
   end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_sell
+      @sell = Sell.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def sell_params
+      params.require(:sell).permit(:buy_id, :date, :price, :fee, :vat, :net, :profit, :days, :percent, :yearly, :sequence, :chart)
+    end  
 end

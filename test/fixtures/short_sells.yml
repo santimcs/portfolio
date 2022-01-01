@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  stock: 
+  date: 2016-02-13
+  qty: 1
+  price: 9.99
+  fee: 9.99
+  vat: 9.99
+  net: 9.99
+  kind: MyString
+  chart: MyString
+  status: MyString
+
+two:
+  stock: 
+  date: 2016-02-13
+  qty: 1
+  price: 9.99
+  fee: 9.99
+  vat: 9.99
+  net: 9.99
+  kind: MyString
+  chart: MyString
+  status: MyString

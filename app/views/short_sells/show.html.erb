@@ -1,0 +1,57 @@
+<% content_for :functional_nav do%>
+<li><%= link_to 'Add', new_short_sell_path %></li>
+<li><%= link_to 'Edit', edit_short_sell_path(@short_sell) %></li>
+<li><%= link_to 'Back', short_sells_path %></li>
+<li><%= link_to 'Destroy', @short_sell, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+
+<% end %>
+<%= currently_at 'short_sells'%>
+
+<p>
+  <b>Stock:</b>
+  <%= @short_sell.stock.name %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @short_sell.date %>
+</p>
+
+<p>
+  <b>Qty:</b>
+  <%= number_with_delimiter(@short_sell.qty) %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= number_to_currency(@short_sell.price) %>
+</p>
+
+<p>
+  <b>Fee:</b>
+  <%= number_to_currency(@short_sell.fee) %>
+</p>
+
+<p>
+  <b>VAT:</b>
+  <%= @short_sell.vat %>
+</p>
+<p>
+  <b>Net:</b>
+  <%= number_to_currency(@short_sell.net) %>
+</p>
+<p>
+  <b>Status:</b>
+  <%= @short_sell.status %>
+</p>
+<p>
+  <b>Kind:</b>
+  <%= @short_sell.kind %>
+</p>
+<p>
+   <%= image_tag @short_sell.chart_url.to_s %>
+</p>
+
+   
+<%= link_to 'Edit', edit_short_sell_path(@short_sell) %> |
+<%= link_to 'Back', short_sells_path %>

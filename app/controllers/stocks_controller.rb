@@ -1,46 +1,30 @@
 class StocksController < ApplicationController
+  before_action :set_stock, only: [:show, :edit, :update, :destroy]
+
   # GET /stocks
   # GET /stocks.json
   def index
     @stocks = Stock.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @stocks }
-    end
   end
 
   # GET /stocks/1
   # GET /stocks/1.json
   def show
-    @stock = Stock.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @stock }
-    end
   end
 
   # GET /stocks/new
-  # GET /stocks/new.json
   def new
     @stock = Stock.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @stock }
-    end
   end
 
   # GET /stocks/1/edit
   def edit
-    @stock = Stock.find(params[:id])
   end
 
   # POST /stocks
   # POST /stocks.json
   def create
-    @stock = Stock.new(params[:stock])
+    @stock = Stock.new(stock_params)
 
     respond_to do |format|
       if @stock.save
@@ -56,10 +40,8 @@ class StocksController < ApplicationController
   # PUT /stocks/1
   # PUT /stocks/1.json
   def update
-    @stock = Stock.find(params[:id])
-
     respond_to do |format|
-      if @stock.update_attributes(params[:stock])
+      if @stock.update(stock_params)
         format.html { redirect_to @stock, notice: 'Stock was successfully updated.' }
         format.json { head :no_content }
       else
@@ -72,12 +54,21 @@ class StocksController < ApplicationController
   # DELETE /stocks/1
   # DELETE /stocks/1.json
   def destroy
-    @stock = Stock.find(params[:id])
     @stock.destroy
-
     respond_to do |format|
       format.html { redirect_to stocks_url }
       format.json { head :no_content }
     end
   end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_stock
+      @stock = Stock.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def stock_params
+      params.require(:stock).permit(:category_id, :name, :website)
+    end  
 end

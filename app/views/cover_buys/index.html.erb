@@ -1,0 +1,49 @@
+<% content_for :functional_nav do%>
+<li><%= link_to 'Add', new_cover_buy_path %></li>
+<% end %>
+<%= currently_at 'Cover Buys'%>
+
+<h1>Listing cover_buys</h1>
+
+<table id="cover_buys" class="display">
+<thead>
+  <tr>
+    <th>Seq</th>    
+    <th>Name</th>
+    <th>Sell Date</th>    
+    <th>Buy Date</th>
+    <th>Sell Price</th>
+    <th>Buy Price</th>
+    <th>Qty</th>    
+    <th>Net</th>
+    <th>Profit</th>
+    <th>Percent</th>
+    <th>Days</th>
+    <th>Yearly</th>
+
+  </tr>
+  </thead>
+  <tbody>
+<% @cover_buys.each do |cover_buy| %>
+  <tr>
+    <td><%= cover_buy.sequence %></td>   
+    <td><%= link_to(cover_buy.short_sell.stock.name, cover_buy) %></td>
+    <td><%= cover_buy.short_sell.date %></td>
+    <td><%= cover_buy.date %></td>
+    <td><%= number_to_currency(cover_buy.short_sell.price) %></td>
+    <td><%= number_to_currency(cover_buy.price) %></td>
+    <td><%= number_with_delimiter(cover_buy.short_sell.qty) %></td>
+    <td><%= number_to_currency(cover_buy.net) %></td>
+    <td><%= number_to_currency(cover_buy.profit) %></td>
+    <td><%= number_to_percentage(cover_buy.percent, precision: 2) %></td>
+    <td><%= cover_buy.days %></td>    
+    <td><%= number_to_percentage(cover_buy.yearly, precision: 2) %></td>
+
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Cover buy', new_cover_buy_path %>

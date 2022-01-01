@@ -10,14 +10,12 @@
   <tr>
     <th>Status</th>  	
     <th>Stock</th>
-    <th>Category</th>    
     <th>Purchase Date</th>
     <th>Days</th>    
     <th>Qty</th>
     <th>Price</th>
     <th>Amount</th>  
     <th>Net</th>        
-    <th>Website</th>  
     <th>Kind</th>    
     <th>Id</th>      
     <th>Sell</th>            
@@ -28,17 +26,15 @@
   <tr>
     <td><%= buy.status %></td>  	
     <td><%= link_to(buy.stock.name, buy) %></td>
-    <td><%= buy.stock.category.name %></td>    
     <td><%= buy.date %></td>
     <td><%= (Date.today - buy.date).to_i %></td>    
     <td><%= number_with_delimiter(buy.qty) %></td>
     <td><%= number_to_currency(buy.price) %></td>    
     <td><%= number_to_currency(buy.amount) %></td>       
     <td><%= number_to_currency(buy.net) %></td>    
-    <td><%= link_to(buy.stock.website, "http://"+buy.stock.website, :target => "_new") %></td>  
    <td><%= buy.kind %></td>    
    <td><%= buy.id %></td>   
-   <td><%= link_to 'Sell', new_sell_path %></td>       
+   <td><%= link_to 'Sell', new_sell_path(:param1 => buy.id) %></td>       
   </tr>
 <% end %>
 </tbody>

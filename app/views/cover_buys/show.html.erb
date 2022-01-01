@@ -1,0 +1,73 @@
+<% content_for :functional_nav do%>
+  <li><%= link_to 'Add', new_cover_buy_path %></li>
+  <li><%= link_to 'Edit', edit_cover_buy_path(@cover_buy) %></li>
+  <li><%= link_to 'Back', cover_buys_path %></li>
+  <li><%= link_to 'Destroy', @cover_buy, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+
+<% end %>
+<%= currently_at 'Cover Buys'%>
+
+
+<p>
+  <b>Short sell:</b>
+  <%= @cover_buy.short_sell.stock.name %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @cover_buy.date %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @cover_buy.price %>
+</p>
+
+<p>
+  <b>Fee:</b>
+  <%= @cover_buy.fee %>
+</p>
+
+<p>
+  <b>Vat:</b>
+  <%= @cover_buy.vat %>
+</p>
+
+<p>
+  <b>Net:</b>
+  <%= number_to_currency(@cover_buy.net) %>
+</p>
+
+<p>
+  <b>Days:</b>
+  <%= @cover_buy.days %>
+</p>
+
+<p>
+  <b>Profit:</b>
+  <%= number_to_currency(@cover_buy.profit) %>
+</p>
+
+<p>
+  <b>Percent:</b>
+  <%= @cover_buy.percent %>
+</p>
+
+<p>
+  <b>Yearly:</b>
+  <%= @cover_buy.yearly %>
+</p>
+
+<p>
+  <b>Sequence:</b>
+  <%= @cover_buy.sequence %>
+</p>
+
+<p>
+  <b>Chart:</b>
+   <%= image_tag @cover_buy.chart_url.to_s %>
+</p>
+
+
+<%= link_to 'Edit', edit_cover_buy_path(@cover_buy) %> |
+<%= link_to 'Back', cover_buys_path %>

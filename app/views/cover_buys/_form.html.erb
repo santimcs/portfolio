@@ -1,0 +1,35 @@
+<%= form_for(@cover_buy) do |f| %>
+  <% if @cover_buy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cover_buy.errors.count, "error") %> prohibited this cover_buy from being saved:</h2>
+
+      <ul>
+      <% @cover_buy.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :short_sell_id %><br />
+    <%= f.number_field :short_sell_id, value: params[:param1] %>
+  </div>  
+  <div class="field">
+    <%= f.label :date %><br />
+    <%= f.date_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :chart %><br />
+    <%= f.file_field :chart %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

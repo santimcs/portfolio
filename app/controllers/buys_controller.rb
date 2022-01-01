@@ -1,46 +1,30 @@
 class BuysController < ApplicationController
+  before_action :set_buy, only: [:show, :edit, :update, :destroy]
+
   # GET /buys
   # GET /buys.json
   def index
     @buys = Buy.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @buys }
-    end
   end
 
   # GET /buys/1
   # GET /buys/1.json
   def show
-    @buy = Buy.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @buy }
-    end
   end
 
   # GET /buys/new
-  # GET /buys/new.json
   def new
     @buy = Buy.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @buy }
-    end
   end
 
   # GET /buys/1/edit
   def edit
-    @buy = Buy.find(params[:id])
   end
 
   # POST /buys
   # POST /buys.json
   def create
-    @buy = Buy.new(params[:buy])
+    @buy = Buy.new(buy_params)
 
     respond_to do |format|
       if @buy.save
@@ -56,10 +40,8 @@ class BuysController < ApplicationController
   # PUT /buys/1
   # PUT /buys/1.json
   def update
-    @buy = Buy.find(params[:id])
-
     respond_to do |format|
-      if @buy.update_attributes(params[:buy])
+      if @buy.update(buy_params)
         format.html { redirect_to @buy, notice: 'Buy was successfully updated.' }
         format.json { head :no_content }
       else
@@ -72,12 +54,21 @@ class BuysController < ApplicationController
   # DELETE /buys/1
   # DELETE /buys/1.json
   def destroy
-    @buy = Buy.find(params[:id])
     @buy.destroy
-
     respond_to do |format|
       format.html { redirect_to buys_url }
       format.json { head :no_content }
     end
   end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_buy
+      @buy = Buy.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def buy_params
+      params.require(:buy).permit(:date, :price, :qty, :status, :stock_id, :kind, :chart)
+    end  
 end

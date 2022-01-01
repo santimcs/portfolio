@@ -1,0 +1,55 @@
+<% content_for :functional_nav do%>
+<li><%= link_to 'Add', new_dividend_path %></li>
+<% end %>
+<%= currently_at 'Dividends'%>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Dividends</h1>
+
+<table id="dividends" class="display">
+  <thead>
+    <tr>
+      <th>Stock</th>
+      <th>Year</th>
+      <th>Qtr</th>
+      <th>Number</th>
+      <th>Ppu</th>
+      <th>Amt</th>
+      <th>Net</th>
+      <th>Pct</th>
+      <th>X date</th>
+      <th>P date</th>
+      <th>ID</th>      
+      <th>S</th>
+      <th>E</th>
+      <th>D</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dividends.each do |dividend| %>
+      <tr>
+        <td><%= dividend.name %></td>
+        <td><%= dividend.year %></td>
+        <td><%= 'Q' + dividend.quarter.to_s %></td>
+        <td><%= number_with_delimiter(dividend.number) %></td>
+        <td><%= dividend.ppu %></td>
+        <td><%= number_to_currency(dividend.amt) %></td>
+        <td><%= number_to_currency(dividend.net) %></td>
+        <td><%= number_to_percentage(dividend.net/dividend.amt*100, precision: 0) %></td>
+        <td><%= dividend.x_date %></td>
+        <td><%= dividend.p_date %></td>
+        <td><%= dividend.id %></td>
+        <td><%= link_to 'S', dividend %></td>
+        <td><%= link_to 'E', edit_dividend_path(dividend) %></td>
+        <td><%= link_to 'D', dividend, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dividend', new_dividend_path %>

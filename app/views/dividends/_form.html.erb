@@ -1,0 +1,57 @@
+<%= form_for(dividend) do |f| %>
+  <% if dividend.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(dividend.errors.count, "error") %> prohibited this dividend from being saved:</h2>
+
+      <ul>
+      <% dividend.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :stock %><br />
+	  <%= f.collection_select :stock_id, Stock.all, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :year %>
+    <%= f.select :year, Dividend::YEAR, {} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :quarter %>
+    <%= f.select :quarter, Dividend::QUARTER, {} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :number %>
+    <%= f.number_field :number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ppu %>
+    <%= f.text_field :ppu %>
+  </div>
+
+  <div class="field">
+    <%= f.label :net %>
+    <%= f.text_field :net %>
+  </div>
+
+  <div class="field">
+    <%= f.label :x_date %>
+    <%= f.date_select :x_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :p_date %>
+    <%= f.date_select :p_date %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

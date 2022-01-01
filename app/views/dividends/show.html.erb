@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Stock:</strong>
+  <%= @dividend.stock.name %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @dividend.year %>
+</p>
+
+<p>
+  <strong>Quarter:</strong>
+  <%= @dividend.quarter %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @dividend.number %>
+</p>
+
+<p>
+  <strong>Ppu:</strong>
+  <%= @dividend.ppu %>
+</p>
+
+<p>
+  <strong>Amt:</strong>
+  <%= @dividend.amt %>
+</p>
+
+<p>
+  <strong>Net:</strong>
+  <%= @dividend.net %>
+</p>
+
+<p>
+  <strong>X date:</strong>
+  <%= @dividend.x_date %>
+</p>
+
+<p>
+  <strong>P date:</strong>
+  <%= @dividend.p_date %>
+</p>
+
+<%= link_to 'Edit', edit_dividend_path(@dividend) %> |
+<%= link_to 'Back', dividends_path %>

@@ -1,13 +1,14 @@
 <% content_for :main_navigation do %>
   <nav id="main_nav" role="navigation">
     <ul>
-
-      <%= nav_tab 'Home',       root_path,       current: current_tab %>
-	  <%= nav_tab 'Sells',      sells_path,      current: current_tab %>
-	  <%= nav_tab 'Buys',       buys_path,       current: current_tab %>
-	  <%= nav_tab 'Stocks',     stocks_path,     current: current_tab %>	      
-      <%= nav_tab 'Categories', categories_path, current: current_tab %>      
-
+      <%= nav_tab 'Home',        root_path,        current: current_tab %>
+      <%= nav_tab 'Buys',        buys_path,        current: current_tab %>
+  	  <%= nav_tab 'Sells',       sells_path,       current: current_tab %>
+  	  <%= nav_tab 'Dividends',   dividends_path,   current: current_tab %>
+      <%= nav_tab 'Short Sells', short_sells_path, current: current_tab %>
+      <%= nav_tab 'Cover Buys',  cover_buys_path,  current: current_tab %>    
+  	  <%= nav_tab 'Stocks',      stocks_path,      current: current_tab %>      
+      <%= nav_tab 'Categories',  categories_path,  current: current_tab %>     
     </ul>
   </nav>
 <% end %>

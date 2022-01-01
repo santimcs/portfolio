@@ -1,8 +1,8 @@
 class Sell < ActiveRecord::Base
- 	attr_accessible :buy_id, :date, :price, :fee, :vat, :net, :profit, :days, :percent, :yearly, :sequence, :chart
+ #	attr_accessible :buy_id, :date, :price, :fee, :vat, :net, :profit, :days, :percent, :yearly, :sequence, :chart
 
  	belongs_to :buy
- 	default_scope :order => 'date ASC'
+ 	default_scope { order('date DESC') }
  	mount_uploader :chart, ImageUploader  
 
 	validates_presence_of :buy_id 
@@ -19,7 +19,7 @@ class Sell < ActiveRecord::Base
 
 	private
 	def assign_values
-		self.fee = (self.buy.qty * self.price) * 0.002078
+		self.fee = (self.buy.qty * self.price) * 0.002070
 		self.vat = self.fee * 0.07
 		self.net = (self.buy.qty * self.price) - self.fee - self.vat
  		self.profit = self.net - self.buy.net

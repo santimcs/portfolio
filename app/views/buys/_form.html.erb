@@ -12,17 +12,20 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :stock %><br />
+    <%= f.label :stock_id %><br />
 	<%= f.collection_select :stock_id, Stock.all, :id, :name %>
   </div>
   <div class="field">
-    <%= f.label :date %><br />
+    <%= f.label :year %><br />
     <%= f.date_select :date %>
   </div>
   <div class="field">
     <%= f.label :qty %><br />
     <%= f.number_field :qty %>
   </div>
+
+
+
   <div class="field">
     <%= f.label :price %><br />
     <%= f.text_field :price %>

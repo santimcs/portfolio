@@ -1,0 +1,47 @@
+<% content_for :functional_nav do%>
+<li><%= link_to 'Add', new_short_sell_path %></li>
+<% end %>
+<%= currently_at 'Short Sells'%>
+
+<h1>Listing short_sells</h1>
+
+<table id="short_sells" class="display">
+<thead>
+  <tr>
+    <th>Status</th>     
+    <th>Stock</th>
+    <th>Category</th>    
+    <th>Sell Date</th>
+    <th>Days</th>    
+    <th>Qty</th>
+    <th>Price</th>
+    <th>Amount</th>  
+    <th>Net</th>        
+    <th>Kind</th>    
+    <th>Id</th>   
+    <th>Buy</th>          
+  </tr>
+</thead>
+<tbody>
+<% @short_sells.each do |short_sell| %>
+  <tr>
+    <td><%= short_sell.status %></td>      
+    <td><%= link_to(short_sell.stock.name, short_sell) %></td>
+    <td><%= short_sell.stock.category.name %></td>    
+    <td><%= short_sell.date %></td>
+    <td><%= (Date.today - short_sell.date).to_i %></td>    
+    <td><%= number_with_delimiter(short_sell.qty) %></td>
+    <td><%= number_to_currency(short_sell.price) %></td>    
+    <td><%= number_to_currency(short_sell.amount) %></td>       
+    <td><%= number_to_currency(short_sell.net) %></td>    
+   <td><%= short_sell.kind %></td>  
+   <td><%= short_sell.id %></td>       
+   <td><%= link_to 'Buy', new_cover_buy_path(:param1 => short_sell.id) %>
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Short sell', new_short_sell_path %>
